@@ -1,0 +1,291 @@
+
+NS_4716_task_4_lift.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000004  00800100  000001ba  0000024e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001ba  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800104  00800104  00000252  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000254  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00000920  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  000009a8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000004d4  00000000  00000000  00000a28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000198  00000000  00000000  00000efc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000355  00000000  00000000  00001094  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000a8  00000000  00000000  000013ec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000146  00000000  00000000  00001494  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000013c  00000000  00000000  000015da  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__vector_1>
+   8:	0c 94 9d 00 	jmp	0x13a	; 0x13a <__vector_2>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ea eb       	ldi	r30, 0xBA	; 186
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a4 30       	cpi	r26, 0x04	; 4
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	11 e0       	ldi	r17, 0x01	; 1
+  8c:	a4 e0       	ldi	r26, 0x04	; 4
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a8 30       	cpi	r26, 0x08	; 8
+  96:	b1 07       	cpc	r27, r17
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 c2 00 	call	0x184	; 0x184 <main>
+  9e:	0c 94 db 00 	jmp	0x1b6	; 0x1b6 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <motor_port_config>:
+int dir=1;
+unsigned int motor_flag=1;
+
+void motor_port_config()
+{
+	DDRB|=0x03;
+  a6:	84 b1       	in	r24, 0x04	; 4
+  a8:	83 60       	ori	r24, 0x03	; 3
+  aa:	84 b9       	out	0x04, r24	; 4
+	PORTB&=0xFC;//off motor
+  ac:	85 b1       	in	r24, 0x05	; 5
+  ae:	8c 7f       	andi	r24, 0xFC	; 252
+  b0:	85 b9       	out	0x05, r24	; 5
+}
+  b2:	08 95       	ret
+
+000000b4 <interrupt_config>:
+void interrupt_config(void) //Interrupt 0 enable
+{
+	PORTD=0x0C;//pull-up
+  b4:	8c e0       	ldi	r24, 0x0C	; 12
+  b6:	8b b9       	out	0x0b, r24	; 11
+	EICRA = 0x00; // INT0 and INT1 is set to trigger with low
+  b8:	10 92 69 00 	sts	0x0069, r1
+	EIMSK = 0x03; // Enable Interrupt INT0 for limit and INT1 for motor/IR
+  bc:	83 e0       	ldi	r24, 0x03	; 3
+  be:	8d bb       	out	0x1d, r24	; 29
+	
+}
+  c0:	08 95       	ret
+
+000000c2 <__vector_1>:
+ISR(INT0_vect)		//used for limit switches
+{
+  c2:	1f 92       	push	r1
+  c4:	0f 92       	push	r0
+  c6:	0f b6       	in	r0, 0x3f	; 63
+  c8:	0f 92       	push	r0
+  ca:	11 24       	eor	r1, r1
+  cc:	8f 93       	push	r24
+  ce:	9f 93       	push	r25
+  d0:	af 93       	push	r26
+  d2:	bf 93       	push	r27
+	if(first==0)
+  d4:	80 91 04 01 	lds	r24, 0x0104
+  d8:	90 91 05 01 	lds	r25, 0x0105
+  dc:	00 97       	sbiw	r24, 0x00	; 0
+  de:	39 f4       	brne	.+14     	; 0xee <__vector_1+0x2c>
+		first=1;
+  e0:	81 e0       	ldi	r24, 0x01	; 1
+  e2:	90 e0       	ldi	r25, 0x00	; 0
+  e4:	90 93 05 01 	sts	0x0105, r25
+  e8:	80 93 04 01 	sts	0x0104, r24
+  ec:	1d c0       	rjmp	.+58     	; 0x128 <__vector_1+0x66>
+	else
+	{
+		PORTB&=0xFC;//stops motor
+  ee:	85 b1       	in	r24, 0x05	; 5
+  f0:	8c 7f       	andi	r24, 0xFC	; 252
+  f2:	85 b9       	out	0x05, r24	; 5
+		dir=dir*(-1);
+  f4:	80 91 02 01 	lds	r24, 0x0102
+  f8:	90 91 03 01 	lds	r25, 0x0103
+  fc:	90 95       	com	r25
+  fe:	81 95       	neg	r24
+ 100:	9f 4f       	sbci	r25, 0xFF	; 255
+ 102:	90 93 03 01 	sts	0x0103, r25
+ 106:	80 93 02 01 	sts	0x0102, r24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 10a:	8f ef       	ldi	r24, 0xFF	; 255
+ 10c:	93 e2       	ldi	r25, 0x23	; 35
+ 10e:	a4 ef       	ldi	r26, 0xF4	; 244
+ 110:	81 50       	subi	r24, 0x01	; 1
+ 112:	90 40       	sbci	r25, 0x00	; 0
+ 114:	a0 40       	sbci	r26, 0x00	; 0
+ 116:	e1 f7       	brne	.-8      	; 0x110 <__vector_1+0x4e>
+ 118:	00 c0       	rjmp	.+0      	; 0x11a <__vector_1+0x58>
+ 11a:	00 00       	nop
+		_delay_ms(5000);
+		flag=1;
+ 11c:	81 e0       	ldi	r24, 0x01	; 1
+ 11e:	90 e0       	ldi	r25, 0x00	; 0
+ 120:	90 93 07 01 	sts	0x0107, r25
+ 124:	80 93 06 01 	sts	0x0106, r24
+	}	
+}
+ 128:	bf 91       	pop	r27
+ 12a:	af 91       	pop	r26
+ 12c:	9f 91       	pop	r25
+ 12e:	8f 91       	pop	r24
+ 130:	0f 90       	pop	r0
+ 132:	0f be       	out	0x3f, r0	; 63
+ 134:	0f 90       	pop	r0
+ 136:	1f 90       	pop	r1
+ 138:	18 95       	reti
+
+0000013a <__vector_2>:
+ISR(INT1_vect)		//used for ir sensor to start lift
+{
+ 13a:	1f 92       	push	r1
+ 13c:	0f 92       	push	r0
+ 13e:	0f b6       	in	r0, 0x3f	; 63
+ 140:	0f 92       	push	r0
+ 142:	11 24       	eor	r1, r1
+ 144:	8f 93       	push	r24
+ 146:	9f 93       	push	r25
+	
+		if(dir==1)
+ 148:	80 91 02 01 	lds	r24, 0x0102
+ 14c:	90 91 03 01 	lds	r25, 0x0103
+ 150:	81 30       	cpi	r24, 0x01	; 1
+ 152:	91 05       	cpc	r25, r1
+ 154:	19 f4       	brne	.+6      	; 0x15c <__vector_2+0x22>
+			PORTB=0x02;//starts motor upwards
+ 156:	82 e0       	ldi	r24, 0x02	; 2
+ 158:	85 b9       	out	0x05, r24	; 5
+ 15a:	02 c0       	rjmp	.+4      	; 0x160 <__vector_2+0x26>
+		else
+			PORTB=0x01;//starts motor downwards
+ 15c:	81 e0       	ldi	r24, 0x01	; 1
+ 15e:	85 b9       	out	0x05, r24	; 5
+	flag=1;
+ 160:	81 e0       	ldi	r24, 0x01	; 1
+ 162:	90 e0       	ldi	r25, 0x00	; 0
+ 164:	90 93 07 01 	sts	0x0107, r25
+ 168:	80 93 06 01 	sts	0x0106, r24
+}
+ 16c:	9f 91       	pop	r25
+ 16e:	8f 91       	pop	r24
+ 170:	0f 90       	pop	r0
+ 172:	0f be       	out	0x3f, r0	; 63
+ 174:	0f 90       	pop	r0
+ 176:	1f 90       	pop	r1
+ 178:	18 95       	reti
+
+0000017a <init_devices>:
+void init_devices()
+{
+	motor_port_config();
+ 17a:	0e 94 53 00 	call	0xa6	; 0xa6 <motor_port_config>
+	interrupt_config();
+ 17e:	0e 94 5a 00 	call	0xb4	; 0xb4 <interrupt_config>
+}
+ 182:	08 95       	ret
+
+00000184 <main>:
+int main(void)
+{
+    init_devices();
+ 184:	0e 94 bd 00 	call	0x17a	; 0x17a <init_devices>
+	while(1)
+	{
+		if(flag)
+ 188:	80 91 06 01 	lds	r24, 0x0106
+ 18c:	90 91 07 01 	lds	r25, 0x0107
+ 190:	00 97       	sbiw	r24, 0x00	; 0
+ 192:	79 f0       	breq	.+30     	; 0x1b2 <main+0x2e>
+		{
+			cli();
+ 194:	f8 94       	cli
+ 196:	8f ef       	ldi	r24, 0xFF	; 255
+ 198:	91 ee       	ldi	r25, 0xE1	; 225
+ 19a:	a4 e0       	ldi	r26, 0x04	; 4
+ 19c:	81 50       	subi	r24, 0x01	; 1
+ 19e:	90 40       	sbci	r25, 0x00	; 0
+ 1a0:	a0 40       	sbci	r26, 0x00	; 0
+ 1a2:	e1 f7       	brne	.-8      	; 0x19c <main+0x18>
+ 1a4:	00 c0       	rjmp	.+0      	; 0x1a6 <main+0x22>
+ 1a6:	00 00       	nop
+			_delay_ms(100);
+			flag=0;
+ 1a8:	10 92 07 01 	sts	0x0107, r1
+ 1ac:	10 92 06 01 	sts	0x0106, r1
+ 1b0:	eb cf       	rjmp	.-42     	; 0x188 <main+0x4>
+		}
+		else
+			sei();
+ 1b2:	78 94       	sei
+ 1b4:	e9 cf       	rjmp	.-46     	; 0x188 <main+0x4>
+
+000001b6 <_exit>:
+ 1b6:	f8 94       	cli
+
+000001b8 <__stop_program>:
+ 1b8:	ff cf       	rjmp	.-2      	; 0x1b8 <__stop_program>
