@@ -11,3 +11,6 @@ A line following, autonomous, RGB detecting, pick and place robot is developed o
     
 **Lift**:
     The lift uses Arduino Nano alongwith IR sensor and 2-limit switches. Limit switches and IR sensors are fed as interrups hence are used to control the lift motor accordingly.
+
+
+***Sample Demonstration***: https://youtu.be/VZ_CtA5Gdu8
