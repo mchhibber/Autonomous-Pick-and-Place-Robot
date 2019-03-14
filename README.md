@@ -1,7 +1,7 @@
 # Autonomous-Pick-and-Place-Robot
 
 **Introduction**:
-A line following, autonomous, RGB detecting, pick and place robot is developed on Arduino Atmega 2560 using AVR C programming for the annual e-Yantra Robotics Competion (sponsored by MHRD under NMEICT).
+A line following, autonomous, RGB detecting, pick and place robot developed on Arduino Atmega 2560 using AVR C programming.
 
 **Path Planning and Line following**:
     To make the robot work autonomously without any external control the Arena was represented as a grid with the nodes having defined coordinates. The Robot uses Dijkstra's Shortest Path algorithm to plan the path and a direction maintaining algorithm is devised which allows it to take appropiate turns at specific nodes so as to follow the planned path. Line following is achieved through 3-channel white line sensor.
